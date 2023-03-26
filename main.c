@@ -48,9 +48,9 @@ int main(int argc, char *argv[]) {
         }
 
         if (!is_zero) {
-            write(to_write_f, read_buf, buf_size);
+            write(to_write_f, read_buf, readed);
         } else {
-            lseek(to_write_f, buf_size, SEEK_CUR);
+            lseek(to_write_f, readed, SEEK_CUR);
         }
     }
     return close(to_write_f);
