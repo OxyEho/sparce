@@ -7,6 +7,7 @@
 #include <string.h>
 
 #define ERROR_ARG_MSG "Error: Enter output filename"
+#define ERROR_BUFF_SIZE "Error: Block size must be positive"
 
 int main(int argc, char *argv[]) {
     int buf_size = 4096;
@@ -14,6 +15,10 @@ int main(int argc, char *argv[]) {
     while((i = getopt(argc, argv, "b:")) != -1) {
         if (i == 'b') {
             buf_size = atoi(optarg);
+            if (buf_size <= 0) {
+                printf(ERROR_BUFF_SIZE);
+                return 1;
+            }
         }
     }
 
